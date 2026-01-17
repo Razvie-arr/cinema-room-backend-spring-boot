@@ -40,7 +40,7 @@ public class CinemaService {
             throw new InvalidSeatException();
         }
 
-        if (isSeatAvailable(row, column)) {
+        if (!isSeatAvailable(row, column)) {
             throw new SeatNotAvailableException();
         }
 
