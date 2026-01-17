@@ -20,17 +20,23 @@ public class CinemaRepository {
         return mainCinema;
     }
 
+
     private Cinema generateMainCinema() {
         int rows = 9;
         int columns = 9;
         List<Seat> seats = new ArrayList<>();
-        for (int i = 1; i <= rows; i++) {
-            for (int j = 1; j <= columns; j++) {
-                Seat seat = new Seat(i, j);
+        for (int row = 1; row <= rows; row++) {
+            for (int column = 1; column <= columns; column++) {
+                Seat seat = new Seat(row, column, generateTicketPrice(row));
                 seats.add(seat);
             }
         }
         return new Cinema(rows, columns, seats);
+    }
+
+    private int generateTicketPrice(int row) {
+        // if row is 1 to 4, price is 10, else price is 8
+        return (row <= 4) ? 10 : 8;
     }
 
 }
