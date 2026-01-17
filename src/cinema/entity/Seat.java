@@ -7,13 +7,13 @@ public class Seat {
     private final int row;
     private final int column;
     private final int price;
-    private boolean isPurchased;
+    private boolean isAvailable;
 
     public Seat(int row, int column, int price) {
         this.row = row;
         this.column = column;
         this.price = price;
-        this.isPurchased = false;
+        this.isAvailable = true;
     }
 
     public int getRow() {
@@ -29,12 +29,12 @@ public class Seat {
     }
 
     @JsonIgnore
-    public boolean isPurchased() {
-        return isPurchased;
+    public boolean isAvailable() {
+        return isAvailable;
     }
 
-    public void setPurchased(boolean purchased) {
-        isPurchased = purchased;
+    public void setAvailable(boolean available) {
+        isAvailable = available;
     }
 
 }

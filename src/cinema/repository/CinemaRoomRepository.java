@@ -1,6 +1,6 @@
 package cinema.repository;
 
-import cinema.entity.Cinema;
+import cinema.entity.CinemaRoom;
 import cinema.entity.Seat;
 import org.springframework.stereotype.Repository;
 
@@ -8,20 +8,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class CinemaRepository {
+public class CinemaRoomRepository {
 
-    private final Cinema mainCinema;
+    private final CinemaRoom cinemaRoom;
 
-    public CinemaRepository() {
-        this.mainCinema = generateMainCinema();
+    public CinemaRoomRepository() {
+        this.cinemaRoom = generateCinemaRoom();
     }
 
-    public Cinema getMainCinema() {
-        return mainCinema;
+    public CinemaRoom getCinemaRoom() {
+        return cinemaRoom;
     }
 
-
-    private Cinema generateMainCinema() {
+    private CinemaRoom generateCinemaRoom() {
         int rows = 9;
         int columns = 9;
         List<Seat> seats = new ArrayList<>();
@@ -31,7 +30,7 @@ public class CinemaRepository {
                 seats.add(seat);
             }
         }
-        return new Cinema(rows, columns, seats);
+        return new CinemaRoom(rows, columns, seats);
     }
 
     private int generateTicketPrice(int row) {
