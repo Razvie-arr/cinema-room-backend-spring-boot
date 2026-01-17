@@ -50,7 +50,7 @@ public class CinemaService {
     }
 
     private boolean isSeatAvailable(int row, int column) {
-        return getCinemaWithAllSeats().getSeat(row, column).isPurchased();
+        return !getCinemaWithAllSeats().getSeat(row, column).isPurchased();
     }
 
     private boolean isSeatValid(int row, int column) {
