@@ -6,6 +6,12 @@ import java.util.List;
 
 public record CinemaRoom(int rows, int columns, List<Seat> seats) {
 
+    public CinemaRoom(int rows, int columns, List<Seat> seats) {
+        this.rows = rows;
+        this.columns = columns;
+        this.seats = List.copyOf(seats);
+    }
+
     public Seat getSeat(int row, int column) {
         validateSeatIndices(row, column);
         int index = (row - 1) * this.columns + (column - 1);

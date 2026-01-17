@@ -4,6 +4,7 @@ import cinema.entity.Ticket;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Repository
@@ -17,6 +18,10 @@ public class TicketRepository {
 
     public void removeTicketByToken(String token) {
         tokenToTicketMap.remove(token);
+    }
+
+    public List<Ticket> getAllTickets() {
+        return List.copyOf(tokenToTicketMap.values());
     }
 
     public Ticket getTicketByToken(String token) {

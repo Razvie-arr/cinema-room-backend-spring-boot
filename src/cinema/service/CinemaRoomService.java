@@ -20,10 +20,20 @@ public class CinemaRoomService {
 
     public CinemaRoom getCinemaRoomWithAvailableSeats() {
         CinemaRoom cinemaRoom = cinemaRoomRepository.getCinemaRoom();
-        List<Seat> availableSeats = cinemaRoom.seats().stream()
+        List<Seat> availableSeats = getAvailableSeats();
+        return new CinemaRoom(cinemaRoom.rows(), cinemaRoom.columns(), availableSeats);
+    }
+
+    public List<Seat> getAvailableSeats() {
+        return cinemaRoomRepository.getCinemaRoom().seats().stream()
                 .filter(Seat::isAvailable)
                 .collect(Collectors.toList());
-        return new CinemaRoom(cinemaRoom.rows(), cinemaRoom.columns(), availableSeats);
+    }
+
+    public List<Seat> getPurchasedSeats() {
+        return cinemaRoomRepository.getCinemaRoom().seats().stream()
+                .filter(seat -> !seat.isAvailable())
+                .collect(Collectors.toList());
     }
 
     public Seat getSeat(int row, int column) {

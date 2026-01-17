@@ -24,6 +24,11 @@ public class GlobalExceptionHandler {
         return buildErrorResponse(e, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(WrongPasswordException.class)
+    public ResponseEntity<ErrorMessage> handleWrongPassword(WrongPasswordException e) {
+        return buildErrorResponse(e, HttpStatus.UNAUTHORIZED);
+    }
+
     private ResponseEntity<ErrorMessage> buildErrorResponse(Exception e, HttpStatus status) {
         return ResponseEntity.status(status).body(new ErrorMessage(e.getMessage()));
     }

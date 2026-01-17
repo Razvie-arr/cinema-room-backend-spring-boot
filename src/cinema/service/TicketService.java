@@ -8,6 +8,7 @@ import cinema.exception.WrongTokenException;
 import cinema.repository.TicketRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -43,6 +44,10 @@ public class TicketService {
 
         ticketRepository.removeTicketByToken(token);
         return ticket;
+    }
+
+    public List<Ticket> getAllTickets() {
+        return ticketRepository.getAllTickets();
     }
 
     public String generateToken() {
